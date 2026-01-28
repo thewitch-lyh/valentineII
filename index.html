@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Be My Valentine 💘</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Comic Sans MS', 'Poppins', cursive;
+      background: linear-gradient(135deg, #ff9acb, #ffd6e8);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .page {
+      display: none;
+      text-align: center;
+      padding: 30px;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    h1 {
+      color: #ff2f92;
+      font-size: 3em;
+    }
+
+    p {
+      font-size: 1.4em;
+      color: #b3005e;
+    }
+
+    button {
+      border: none;
+      padding: 15px 30px;
+      margin: 15px;
+      font-size: 1.2em;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .ok-btn {
+      background-color: #ff4fa3;
+      color: white;
+    }
+
+    .yes-btn {
+      background-color: #ff1f8f;
+      color: white;
+      font-size: 1.5em;
+    }
+
+    .no-btn {
+      background-color: #ffd1e8;
+      color: #ff1f8f;
+    }
+
+    img {
+      width: 200px;
+      margin-top: 20px;
+      border-radius: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PAGE 1 -->
+  <div class="page active" id="page1">
+    <h1>Hey you 💗</h1>
+    <p>I wanna ask you something…</p>
+    <img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif">
+    <br>
+    <button class="ok-btn" onclick="nextPage()">Okay 🥺</button>
+  </div>
+
+  <!-- PAGE 2 -->
+  <div class="page" id="page2">
+    <h1>Will you be my Valentine? 💘💖</h1>
+    <p>(Choose wisely 😌)</p>
+    <img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif">
+    <br>
+    <button class="yes-btn" id="yesBtn" onclick="yesClicked()">YES 💕🥰💞</button>
+    <button class="no-btn" id="noBtn" onclick="noClicked()">NO 🙄</button>
+  </div>
+
+  <!-- PAGE 3 -->
+  <div class="page" id="page3">
+    <h1>YAYYYYY 💕💍</h1>
+    <p>I knew it. You’re stuck with me now 😘</p>
+    <img src="https://media.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif">
+  </div>
+
+<script>
+  let noScale = 1;
+  let yesScale = 1.2;
+
+  function nextPage() {
+    document.getElementById("page1").classList.remove("active");
+    document.getElementById("page2").classList.add("active");
+  }
+
+  function noClicked() {
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+
+    noScale -= 0.15;
+    yesScale += 0.15;
+
+    if (noScale <= 0.1) {
+      noBtn.style.display = "none";
+    } else {
+      noBtn.style.transform = `scale(${noScale})`;
+    }
+
+    yesBtn.style.transform = `scale(${yesScale})`;
+  }
+
+  function yesClicked() {
+    document.getElementById("page2").classList.remove("active");
+    document.getElementById("page3").classList.add("active");
+  }
+</script>
+
+</body>
+</html>
